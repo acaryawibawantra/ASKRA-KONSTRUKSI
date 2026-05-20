@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import { usePathname } from "next/navigation";
 
@@ -9,58 +9,47 @@ export function SmoothScrollProvider({
 }: {
     children: React.ReactNode;
 }) {
-    const [isMobile, setIsMobile] = useState(false);
     const pathname = usePathname();
-    const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
+    const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
-        // Detect mobile
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
+        // Detect mobile once at init time — no state, no re-render loop
+        const isMobile = window.innerWidth < 768;
 
-        // Initialize Lenis with optimized settings
         const lenis = new Lenis({
-            // Shorter duration for mobile = snappier feel
             duration: isMobile ? 0.8 : 1.2,
-            // Smooth easing curve like sammastudio
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
-            // Enable smooth wheel scrolling
             smoothWheel: true,
-            // Lower multiplier for smoother scroll
             wheelMultiplier: isMobile ? 0.8 : 1,
-            // Touch multiplier for mobile - lower = smoother
             touchMultiplier: 1.5,
-            // Enable infinite scroll behavior
             infinite: false,
         });
 
-        setLenisInstance(lenis);
+        lenisRef.current = lenis;
 
-        // RAF loop for Lenis - use performance timestamp
+        // Single RAF loop — cancel on cleanup
+        let rafId: number;
         function raf(time: number) {
             lenis.raf(time);
-            requestAnimationFrame(raf);
+            rafId = requestAnimationFrame(raf);
         }
+        rafId = requestAnimationFrame(raf);
 
-        requestAnimationFrame(raf);
-
-        // Cleanup
         return () => {
+            cancelAnimationFrame(rafId);
             lenis.destroy();
-            setLenisInstance(null);
-            window.removeEventListener('resize', checkMobile);
+            lenisRef.current = null;
         };
-    }, [isMobile]);
+    }, []); // ← run once only, no isMobile dependency
 
     // Reset scroll position on route change
     useEffect(() => {
-        if (lenisInstance) {
-            lenisInstance.scrollTo(0, { immediate: true });
+        if (lenisRef.current) {
+            lenisRef.current.scrollTo(0, { immediate: true });
         }
-    }, [pathname, lenisInstance]);
+    }, [pathname]);
 
     return <>{children}</>;
 }
