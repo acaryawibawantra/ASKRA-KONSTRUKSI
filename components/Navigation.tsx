@@ -25,7 +25,9 @@ export function Navigation() {
     const isMobile = useIsMobile();
 
     useEffect(() => {
-        const timer = setTimeout(() => setShowNav(true), 1800);
+        const hasVisited = sessionStorage.getItem("hasVisitedAskra");
+        const delay = hasVisited ? 100 : 1800;
+        const timer = setTimeout(() => setShowNav(true), delay);
         return () => clearTimeout(timer);
     }, []);
 
