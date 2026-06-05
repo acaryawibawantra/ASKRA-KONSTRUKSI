@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export function Preloader() {
+    const [isMounted, setIsMounted] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     if (typeof window !== "undefined" && !(window as any).__appLoadTime) {
@@ -12,6 +13,14 @@ export function Preloader() {
     }
 
     useEffect(() => {
+        setIsMounted(true);
+        const hasVisited = sessionStorage.getItem("hasVisitedAskra");
+        if (hasVisited) {
+            setIsLoading(false);
+            document.body.style.overflow = "unset";
+            return;
+        }
+
         // Lock scroll to top during loading
         document.body.style.overflow = "hidden";
         window.scrollTo(0, 0);
@@ -19,6 +28,7 @@ export function Preloader() {
         const timer = setTimeout(() => {
             setIsLoading(false);
             document.body.style.overflow = "unset";
+            sessionStorage.setItem("hasVisitedAskra", "true");
         }, 2000);
 
         return () => {
@@ -26,6 +36,8 @@ export function Preloader() {
             document.body.style.overflow = "unset";
         };
     }, []);
+
+    if (!isMounted) return null;
 
     return (
         <AnimatePresence>
