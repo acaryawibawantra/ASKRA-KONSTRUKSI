@@ -15,12 +15,15 @@ export function Hero() {
         let delay = 100; // Default minimal delay for instant transitions
 
         if (typeof window !== "undefined") {
-            const loadTime = (window as any).__appLoadTime;
-            if (loadTime) {
-                const elapsed = Date.now() - loadTime;
-                // If it's the initial load, wait for 2000ms preloader + 200ms extra
-                if (elapsed < 2000) {
-                    delay = (2000 - elapsed) + 200;
+            const hasVisited = sessionStorage.getItem("hasVisitedAskra");
+            if (!hasVisited) {
+                const loadTime = (window as any).__appLoadTime;
+                if (loadTime) {
+                    const elapsed = Date.now() - loadTime;
+                    // If it's the initial load, wait for 2000ms preloader + 200ms extra
+                    if (elapsed < 2000) {
+                        delay = (2000 - elapsed) + 200;
+                    }
                 }
             }
         }
