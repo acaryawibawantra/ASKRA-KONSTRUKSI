@@ -55,6 +55,7 @@ export function Hero() {
                     src="/images/hero/image-hero.jpg"
                     alt="Desain Bangun Renovasi - Hero"
                     fill
+                    sizes="100vw"
                     className="object-cover"
                     priority
                 />

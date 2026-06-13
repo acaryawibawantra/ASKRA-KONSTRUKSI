@@ -174,6 +174,7 @@ export function Portfolio() {
                                         src={project.image}
                                         alt={project.title}
                                         fill
+                                        sizes="(max-width: 768px) 80vw, (max-width: 1024px) 50vw, 40vw"
                                         className={`object-cover transition-all duration-700 ${hoveredId === project.id ? 'scale-110' : 'scale-100'
                                             }`}
                                     />

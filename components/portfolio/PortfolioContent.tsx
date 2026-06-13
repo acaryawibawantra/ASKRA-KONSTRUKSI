@@ -92,6 +92,7 @@ export function PortfolioContent() {
                             src={featuredProjects[currentFeatured].image}
                             alt={featuredProjects[currentFeatured].title}
                             fill
+                            sizes="100vw"
                             className="object-cover"
                             priority
                         />

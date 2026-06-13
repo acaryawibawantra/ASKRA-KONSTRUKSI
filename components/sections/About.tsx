@@ -197,6 +197,7 @@ export function About() {
                                     src="/images/about/about-image.png"
                                     alt="ASKRA Interior"
                                     fill
+                                    sizes="(max-width: 1024px) 100vw, 50vw"
                                     className="object-cover"
                                 />
                             </motion.div>

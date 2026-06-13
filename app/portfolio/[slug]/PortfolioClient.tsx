@@ -33,6 +33,7 @@ export function PortfolioClient({ project, relatedProjects }: PortfolioClientPro
                         src={project.image}
                         alt={project.title}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                         priority
                     />
@@ -198,6 +199,7 @@ export function PortfolioClient({ project, relatedProjects }: PortfolioClientPro
                                         src={image}
                                         alt={`${project.title} - Image ${index + 1}`}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                                         className="object-cover transition-transform duration-700 hover:scale-105"
                                     />
                                 )}
@@ -246,6 +248,7 @@ export function PortfolioClient({ project, relatedProjects }: PortfolioClientPro
                                                 src={related.image}
                                                 alt={related.title}
                                                 fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
@@ -316,6 +319,7 @@ export function PortfolioClient({ project, relatedProjects }: PortfolioClientPro
                                         src={selectedMedia}
                                         alt="Gallery Full Image"
                                         fill
+                                        sizes="100vw"
                                         className="object-contain"
                                     />
                                 </div>

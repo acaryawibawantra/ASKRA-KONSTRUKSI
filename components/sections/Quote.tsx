@@ -40,8 +40,9 @@ export function Quote() {
                             src="/images/quote/after.png"
                             alt="Architecture Final Render"
                             fill
+                            sizes="(max-width: 1024px) 100vw, 1024px"
                             className="object-cover md:object-contain object-center scale-95 md:scale-100"
-                            priority
+                            priority={false}
                         />
                     </div>
 
@@ -54,8 +55,9 @@ export function Quote() {
                             src="/images/quote/before.png"
                             alt="Architecture Sketch"
                             fill
+                            sizes="(max-width: 1024px) 100vw, 1024px"
                             className="object-cover md:object-contain object-center scale-95 md:scale-100"
-                            priority
+                            priority={false}
                         />
                     </div>
 

@@ -90,6 +90,7 @@ export function Tagline() {
                                 alt="ASKRA Konstruksi – proyek unggulan"
                                 width={900}
                                 height={580}
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                                 priority
                                 className={s.img}
                             />

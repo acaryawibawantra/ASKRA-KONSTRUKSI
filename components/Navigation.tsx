@@ -10,7 +10,7 @@ import Image from "next/image";
 const menuItems = [
     { label: "About", href: "/about" },
     { label: "Services", href: "/#services" },
-    { label: "Portfolio", href: "/#portfolio" },
+    { label: "Portfolio", href: "/portfolio" },
     //{ label: "Testimonials", href: "/#testimonials" },
     //{ label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },

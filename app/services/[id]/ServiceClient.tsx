@@ -30,6 +30,7 @@ export function ServiceClient({ service, relatedProjects, otherServices }: Servi
                         src={service.image}
                         alt={service.title}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                         priority
                     />
@@ -131,6 +132,7 @@ export function ServiceClient({ service, relatedProjects, otherServices }: Servi
                                         src={image}
                                         alt={`${service.title} - Image ${index + 1}`}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                     {linkedProject && (
@@ -194,6 +196,7 @@ export function ServiceClient({ service, relatedProjects, otherServices }: Servi
                                                 src={project.image}
                                                 alt={project.title}
                                                 fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
@@ -239,6 +242,7 @@ export function ServiceClient({ service, relatedProjects, otherServices }: Servi
                                             src={otherService.image}
                                             alt={otherService.title}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
                                         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />

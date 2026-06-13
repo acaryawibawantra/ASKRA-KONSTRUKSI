@@ -71,7 +71,7 @@ export function BeforeAfterSlider({ before, after, title }: BeforeAfterSliderPro
                         alt="After"
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        sizes="(max-width: 1280px) 100vw, 1280px"
                     />
                     {/* After Label */}
                     <div className="absolute top-4 right-4 bg-teal text-white px-3 py-1.5 rounded-full text-xs md:text-sm font-medium shadow-lg">
@@ -91,7 +91,7 @@ export function BeforeAfterSlider({ before, after, title }: BeforeAfterSliderPro
                         alt="Before"
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        sizes="(max-width: 1280px) 100vw, 1280px"
                     />
                     {/* Before Label */}
                     <div className="absolute top-4 left-4 bg-charcoal/80 text-white px-3 py-1.5 rounded-full text-xs md:text-sm font-medium shadow-lg">

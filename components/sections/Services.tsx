@@ -94,6 +94,7 @@ function StickyCard({ service, index, total }: { service: any; index: number; to
                     src={service.image || ""}
                     alt={service.title}
                     fill
+                    sizes="100vw"
                     className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40" />
